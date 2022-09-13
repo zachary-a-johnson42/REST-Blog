@@ -32,7 +32,7 @@ public class PostsController {
         }
         return null;
     }
-
+    //Create a new post
     @PostMapping("")
     public void createPost(@RequestBody Post newPost){
         newPost.setId(postID);
@@ -40,6 +40,7 @@ public class PostsController {
         posts.add(newPost);
     }
 
+    //Delete a post by ID
     @DeleteMapping("/{id}")
     public void deletePostByID(@PathVariable long id) {
         Post postToDelete = getPostByID(id);
@@ -52,6 +53,7 @@ public class PostsController {
         throw new RuntimeException("Post could not be found.");
     }
 
+    //Update title or content for post by ID
     @PutMapping("/{id}")
     public void updatePost(@RequestBody Post updatedPost, @PathVariable long id){
 
@@ -73,6 +75,4 @@ public class PostsController {
         }
         throw new RuntimeException("Post not found.");
     }
-
-
 }
